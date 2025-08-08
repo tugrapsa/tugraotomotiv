@@ -10,22 +10,49 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script>
+        function toggleMenu() {
+          const menu = document.getElementById("mobile-menu");
+          const body = document.body;
+          menu.classList.toggle("hidden");
+          body.classList.toggle("overflow-hidden");
+        }
+      </script>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
     <!-- Header -->
-    <header class="bg-blue-900 text-white p-4 sticky top-0 z-10 shadow-md transition-shadow duration-300">
-        <nav class="max-w-6xl mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold animate__animated animate__fadeIn">Tuğra Otomotiv</h1>
-            <ul class="flex space-x-6">
-                <li><a href="index.html" class="hover:text-blue-300 transition-colors">Ana Sayfa</a></li>
-                <li><a href="about.html" class="hover:text-blue-300 transition-colors">Hakkımızda</a></li>
-                <li><a href="services.html" class="hover:text-blue-300 transition-colors">Hizmetler</a></li>
-                <li><a href="contact.html" class="hover:text-blue-300 transition-colors">İletişim</a></li>
-                <li><a href="faq.html" class="hover:text-blue-300 transition-colors">SSS</a></li>
-            </ul>
-        </nav>
-    </header>
-
+    <header class="bg-blue-900 text-white p-4 sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+          <h1 class="text-2xl font-bold">Tuğra Otomotiv</h1>
+          
+          <!-- Hamburger Menü Butonu -->
+          <button class="md:hidden flex flex-col space-y-1" onclick="toggleMenu()">
+            <span class="w-6 h-0.5 bg-white"></span>
+            <span class="w-6 h-0.5 bg-white"></span>
+            <span class="w-6 h-0.5 bg-white"></span>
+          </button>
+    
+          <!-- Normal Menü -->
+          <ul class="hidden md:flex space-x-6">
+            <li><a href="index.html" class="hover:text-blue-300">Ana Sayfa</a></li>
+            <li><a href="about.html" class="hover:text-blue-300">Hakkımızda</a></li>
+            <li><a href="services.html" class="hover:text-blue-300">Hizmetler</a></li>
+            <li><a href="contact.html" class="hover:text-blue-300">İletişim</a></li>
+            <li><a href="faq.html" class="hover:text-blue-300">SSS</a></li>
+          </ul>
+        </div>
+    
+        <!-- Mobil Menü (Toggle ile aç/kapat) -->
+        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-blue-900 bg-opacity-95 flex flex-col items-center justify-center text-white space-y-6 text-xl hidden z-40">
+          <a href="index.html" onclick="toggleMenu()">Ana Sayfa</a>
+          <a href="about.html" onclick="toggleMenu()">Hakkımızda</a>
+          <a href="services.html" onclick="toggleMenu()">Hizmetler</a>
+          <a href="contact.html" onclick="toggleMenu()">İletişim</a>
+          <a href="faq.html" onclick="toggleMenu()">SSS</a>
+          <button class="absolute top-4 right-6 text-3xl" onclick="toggleMenu()">&times;</button>
+        </div>
+      </header>
+    
     <!-- FAQ Section -->
     <section class="py-12">
         <div class="max-w-6xl mx-auto">
