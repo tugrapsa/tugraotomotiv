@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tuğra Otomotiv’in Peugeot, Citroën, DS ve Opel araçlar için sıkça sorulan sorular ve kronik sorun çözümleri.">
+    <meta name="keywords" content="Konya oto servis, Peugeot 1.2 PureTech sorunları, Citroën 1.6 HDi tamir, PSA kronik arızalar, Tuğra Otomotiv SSS">
+    <meta name="author" content="Tuğra Otomotiv">
+    <title>SSS - Tuğra Otomotiv</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+    <!-- Header -->
+    <header class="bg-blue-900 text-white p-4 sticky top-0 z-10 shadow-md transition-shadow duration-300">
+        <nav class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold animate__animated animate__fadeIn">Tuğra Otomotiv</h1>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-blue-300 transition-colors">Ana Sayfa</a></li>
+                <li><a href="about.html" class="hover:text-blue-300 transition-colors">Hakkımızda</a></li>
+                <li><a href="services.html" class="hover:text-blue-300 transition-colors">Hizmetler</a></li>
+                <li><a href="contact.html" class="hover:text-blue-300 transition-colors">İletişim</a></li>
+                <li><a href="faq.html" class="hover:text-blue-300 transition-colors">SSS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- FAQ Section -->
+    <section class="py-12">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8 animate__animated animate__fadeInUp">Sıkça Sorulan Sorular</h2>
+            <p class="text-lg text-center mb-8 animate__animated animate__fadeInUp animate__delay-1s">Peugeot, Citroën, DS ve Opel araçlarınızın yaygın sorunlarını uzman ekibimizle çözüyoruz. Sorularınızı aşağıda bulabilirsiniz!</p>
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="bg-white rounded-lg shadow-lg">
+                    <button class="w-full text-left p-4 flex justify-between items-center hover:bg-blue-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold"><i class="fas fa-engine mr-2"></i> 1.2 PureTech motorların yaygın sorunları nelerdir?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="hidden p-4 bg-gray-50">
+                        <p>1.2 PureTech motorlar, özellikle Peugeot 208, 308 ve Citroën C3, C4 modellerinde sıkça kullanılan benzinli motorlardır. Yaygın sorunlar arasında şunlar yer alır:</p>
+                        <ul class="list-disc pl-6">
+                            <li>Zamanlama zinciri aşınması, özellikle 80.000 km sonrası.</li>
+                            <li>Turbo arızaları ve yağ kaçağı.</li>
+                            <li>Benzin enjeksiyon sisteminde karbon birikmesi.</li>
+                        </ul>
+                        <p>Tuğra Otomotiv olarak, İbrahim Etem Güneş ve Ökkeş Usta liderliğinde, gelişmiş diagnostik cihazlarla bu sorunları tespit ediyor, orijinal yedek parçalarla tamir ediyor veya sıfırdan motor yenileme (rektifiye) yapıyoruz. Müşterilerimizin araçlarını ilk günkü performansına kavuşturuyoruz!</p>
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="bg-white rounded-lg shadow-lg">
+                    <button class="w-full text-left p-4 flex justify-between items-center hover:bg-blue-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold"><i class="fas fa-engine mr-2"></i> 1.6 HDi motorlarda hangi sorunlar görülüyor?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="hidden p-4 bg-gray-50">
+                        <p>1.6 HDi dizel motorlar, Peugeot 206, 307, Citroën C4 ve Opel modellerinde yaygındır. Kronik sorunlar şunlardır:</p>
+                        <ul class="list-disc pl-6">
+                            <li>DPF (dizel partikül filtresi) tıkanması.</li>
+                            <li>Enjektör arızaları ve yakıt sistemi sorunları.</li>
+                            <li>Turbo basınç kayıpları.</li>
+                        </ul>
+                        <p>Ekibimiz, bu sorunları en son teknoloji cihazlarla teşhis ediyor. DPF temizliği, enjektör tamiri ve turbo bakımı gibi hizmetlerle müşterilerimizi memnun ediyoruz. Gerekirse motoru sıfırdan yeniliyoruz.</p>
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="bg-white rounded-lg shadow-lg">
+                    <button class="w-full text-left p-4 flex justify-between items-center hover:bg-blue-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold"><i class="fas fa-engine mr-2"></i> 1.5 BlueHDi motorların kronik sorunları nelerdir?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="hidden p-4 bg-gray-50">
+                        <p>1.5 BlueHDi motorlar, yeni nesil PSA dizel motorlarıdır ve Peugeot 308, Citroën C5 Aircross gibi modellerde kullanılır. Yaygın sorunlar:</p>
+                        <ul class="list-disc pl-6">
+                            <li>AdBlue sistemi arızaları (kristalleşme veya pompa sorunları).</li>
+                            <li>EGR valfi tıkanması.</li>
+                            <li>Yakıt enjeksiyon sisteminde düşük performans.</li>
+                        </ul>
+                        <p>Tuğra Otomotiv’de, AdBlue sistemi tamiri, EGR temizliği ve motor yenileme hizmetleriyle bu sorunları çözüyoruz. Uzman kadromuz, her müşteriye özel çözümler sunar.</p>
+                    </div>
+                </div>
+                <!-- FAQ 4 -->
+               率先
+                <div class="bg-white rounded-lg shadow-lg">
+                    <button class="w-full text-left p-4 flex justify-between items-center hover:bg-blue-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold"><i class="fas fa-engine mr-2"></i> 2.0 HDi motorlarda sık karşılaşılan sorunlar nelerdir?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="hidden p-4 bg-gray-50">
+                        <p>2.0 HDi motorlar, Peugeot 407, Citroën C5 gibi modellerde bulunur. Yaygın sorunlar:</p>
+                        <ul class="list-disc pl-6">
+                            <li>Yüksek basınçlı yakıt pompası arızaları.</li>
+                            <li>Turbo hortumu yıpranması.</li>
+                            <li>DPF ve EGR sistemi tıkanıklıkları.</li>
+                        </ul>
+                        <p>Deneyimli ekibimiz, bu motorların tüm sorunlarını orijinal parçalar ve profesyonel ekipmanlarla çözüyor. Müşteri memnuniyeti garantili!</p>
+                    </div>
+                </div>
+                <!-- FAQ 5 -->
+                <div class="bg-white rounded-lg shadow-lg">
+                    <button class="w-full text-left p-4 flex justify-between items-center hover:bg-blue-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold"><i class="fas fa-car-battery mr-2"></i> PSA araçlarda elektronik sistem arızaları nasıl çözülür?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="hidden p-4 bg-gray-50">
+                        <p>PSA grubu araçlarda sık görülen elektronik sorunlar arasında şunlar yer alır:</p>
+                        <ul class="list-disc pl-6">
+                            <li>ECU (motor kontrol ünitesi) hataları.</li>
+                            <li>ABS ve ESP sistem arızaları.</li>
+                            <li>Elektrik kablo demeti sorunları.</li>
+                        </ul>
+                        <p>Tuğra Otomotiv, gelişmiş diagnostik cihazlarla bu arızaları hızlıca tespit eder ve orijinal parçalarla tamir eder. İbrahim Etem Güneş ve Ökkeş Usta, her zaman en iyi çözümü sunar.</p>
+                    </div>
+                </div>
+                <!-- FAQ 6 -->
+                <div class="bg-white rounded-lg shadow-lg">
+                    <button class="w-full text-left p-4 flex justify-between items-center hover:bg-blue-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold"><i class="fas fa-tools mr-2"></i> Motor rektifiye işlemi nasıl yapılır?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="hidden p-4 bg-gray-50">
+                        <p>Motor rektifiyesi, aşınmış veya arızalı motorların sıfırdan yenilenmesi işlemidir. Tuğra Otomotiv’de süreç şöyle işler:</p>
+                        <ul class="list-disc pl-6">
+                            <li>Motorun detaylı teşhisi ve hasar analizi.</li>
+                            <li>Silindir kapakları, pistonlar ve diğer bileşenlerin yenilenmesi.</li>
+                            <li>Orijinal PSA parçalarıyla montaj ve test.</li>
+                        </ul>
+                        <p>Uzman kadromuz, 1.2 VTi, 1.2 PureTech, 1.6 HDi gibi tüm PSA motorlarında rektifiye yaparak müşterilerimizi mutlu ediyor.</p>
+                    </div>
+                </div>
+                <!-- FAQ 7 -->
+                <div class="bg-white rounded-lg shadow-lg">
+                    <button class="w-full text-left p-4 flex justify-between items-center hover:bg-blue-50 transition-colors" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-semibold"><i class="fas fa-wrench mr-2"></i> Neden Tuğra Otomotiv’i tercih etmeliyim?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="hidden p-4 bg-gray-50">
+                        <p>Tuğra Otomotiv, Konya’da PSA grubu araçlar için lider bir servis merkezidir. Neden bizi seçmelisiniz?</p>
+                        <ul class="list-disc pl-6">
+                            <li>İbrahim Etem Güneş ve Ökkeş Usta’nın yılların deneyimi.</li>
+                            <li>Gelişmiş diagnostik cihazlar ve orijinal yedek parçalar.</li>
+                            <li>Müşteri memnuniyetine odaklı hizmet anlayışı.</li>
+                            <li>Hızlı, güvenilir ve uygun fiyatlı çözümler.</li>
+                        </ul>
+                        <p>Karatay Sanayi’deki atölyemizde, aracınızı ilk günkü haline getiriyoruz!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bg-blue-800 text-white py-8">
+        <div class="max-w-6xl mx-auto text-center animate__animated animate__bounceIn">
+            <h3 class="text-2xl font-bold mb-4">Sorularınız mı var? Bize ulaşın!</h3>
+            <a href="tel:+905424212442" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+                <i class="fas fa-phone-alt mr-2"></i> Hemen Arayın
+            </a>
+        </div>
+    </section>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/+905424212442" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-transform transform hover:scale-110">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white p-4 text-center">
+        <p>&copy; 2025 Tuğra Otomotiv. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- JavaScript for Accordion -->
+    <script>
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('.fa-chevron-down');
+            answer.classList.toggle('hidden');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+    </script>
+</body>
+</html>

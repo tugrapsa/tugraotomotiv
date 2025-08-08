@@ -1,0 +1,146 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tuğra Otomotiv’in Peugeot, Citroën, DS ve Opel araçlar için sunduğu tamir, bakım ve motor yenileme hizmetleri.">
+    <meta name="keywords" content="Konya oto servis, Peugeot bakım, Citroën tamir, PSA araç hizmetleri, 1.2 PureTech tamir, 1.6 HDi bakım, motor rektifiye Konya">
+    <meta name="author" content="Tuğra Otomotiv">
+    <title>Hizmetler - Tuğra Otomotiv</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+    <!-- Header -->
+    <header class="bg-blue-900 text-white p-4 sticky top-0 z-10 shadow-md transition-shadow duration-300">
+        <nav class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold animate__animated animate__fadeIn">Tuğra Otomotiv</h1>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-blue-300 transition-colors">Ana Sayfa</a></li>
+                <li><a href="about.html" class="hover:text-blue-300 transition-colors">Hakkımızda</a></li>
+                <li><a href="services.html" class="hover:text-blue-300 transition-colors">Hizmetler</a></li>
+                <li><a href="contact.html" class="hover:text-blue-300 transition-colors">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Services Section -->
+    <section class="py-12">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8 animate__animated animate__fadeInUp">Hizmetlerimiz</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-1s">
+                    <i class="fas fa-tools text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Periyodik Bakım</h3>
+                    <p>Peugeot, Citroën, DS ve Opel araçlar için yağ değişimi, filtre değişimi ve genel kontroller.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-2s">
+                    <i class="fas fa-diagnoses text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Elektronik Diagnostik</h3>
+                    <p>Gelişmiş cihazlarla motor, şanzıman ve elektronik sistem arızalarını hızlıca tespit ediyoruz.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-3s">
+                    <i class="fas fa-cogs text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Yedek Parça Değişimi</h3>
+                    <p>Orijinal PSA yedek parçalarıyla aracınızın performansını koruyoruz.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-4s">
+                    <i class="fas fa-car-battery text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Fren ve Süspansiyon</h3>
+                    <p>Fren balatası, disk ve süspansiyon sistemleri için uzman onarım hizmetleri.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-5s">
+                    <i class="fas fa-engine text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">1.2 VTi Motor Tamiri</h3>
+                    <p>1.2 VTi motorlar için zincir değişimi, subap tamiri ve komple motor yenileme (rektifiye).</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-6s">
+                    <i class="fas fa-engine text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">1.2 PureTech Motor Tamiri</h3>
+                    <p>Turbo arızaları, yağ kaçağı tamiri ve 1.2 PureTech motorlar için sıfırdan yenileme.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-7s">
+                    <i class="fas fa-engine text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">1.6 HDi Motor Tamiri</h3>
+                    <p>1.6 HDi dizel motorlar için enjektör tamiri, turbo bakımı ve motor rektifiye hizmetleri.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-8s">
+                    <i class="fas fa-engine text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">1.5 BlueHDi Motor Tamiri</h3>
+                    <p>1.5 BlueHDi motorlar için AdBlue sistemi tamiri, EGR bakımı ve komple yenileme.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-9s">
+                    <i class="fas fa-engine text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">2.0 HDi Motor Tamiri</h3>
+                    <p>2.0 HDi motorlar için yüksek basınç pompası tamiri ve sıfırdan motor yenileme.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-10s">
+                    <i class="fas fa-tools text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Diğer PSA Motorları</h3>
+                    <p>Tüm PSA grubu motorlar için tamir, bakım ve rektifiye hizmetleri sunuyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bg-blue-800 text-white py-8">
+        <div class="max-w-6xl mx-auto text-center animate__animated animate__bounceIn">
+            <h3 class="text-2xl font-bold mb-4">Aracınız için En İyi Bakımı Alın!</h3>
+            <a href="tel:+905424212442" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+                <i class="fas fa-phone-alt mr-2"></i> Hemen Arayın
+            </a>
+        </div>
+    </section>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/+905424212442" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-transform transform hover:scale-110">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white p-4 text-center">
+        <p>&copy; 2025 Tuğra Otomotiv. Tüm hakları saklıdır.</p>
+    </footer>
+</body>
+</html>
