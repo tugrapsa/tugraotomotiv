@@ -72,6 +72,38 @@
         <span class="text-sm">WhatsApp</span>
       </a>
     </div>
+
+    <!-- Araç Bakım Hesaplayıcı -->
+    <div class="w-full max-w-md bg-white text-blue-900 p-6 rounded-lg shadow-lg mt-8">
+      <h2 class="text-xl font-semibold mb-4 text-center">Araç Bakım Hesaplayıcı</h2>
+      <form id="maintenanceForm" class="space-y-4">
+        <div>
+          <label for="fuelType" class="block text-sm font-medium">Aracın Yakıt Türü:</label>
+          <select id="fuelType" name="fuelType" class="w-full p-2 border border-gray-300 rounded-md" required>
+            <option value="benzin">Benzinli</option>
+            <option value="dizel">Dizel</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="lastMaintenanceDate" class="block text-sm font-medium">Son Bakım Tarihi:</label>
+          <input type="date" id="lastMaintenanceDate" name="lastMaintenanceDate" class="w-full p-2 border border-gray-300 rounded-md" required>
+        </div>
+
+        <div>
+          <label for="lastMaintenanceKm" class="block text-sm font-medium">Son Bakım Kilometresi (km):</label>
+          <input type="number" id="lastMaintenanceKm" name="lastMaintenanceKm" min="0" class="w-full p-2 border border-gray-300 rounded-md" required>
+        </div>
+
+        <div>
+          <label for="currentKm" class="block text-sm font-medium">Mevcut Kilometre (km):</label>
+          <input type="number" id="currentKm" name="currentKm" min="0" class="w-full p-2 border border-gray-300 rounded-md" required>
+        </div>
+
+        <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700">Sonraki Bakımı Hesapla</button>
+      </form>
+      <div id="result" class="mt-4 p-4 bg-gray-100 rounded-md hidden"></div>
+    </div>
   </main>
 
   <!-- Footer -->
@@ -102,6 +134,51 @@
           console.log('Service Worker kaydedilemedi: ', error);
         });
     }
+  </script>
+
+  <!-- Araç Bakım Hesaplayıcı Script -->
+  <script>
+    document.getElementById('maintenanceForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Girdi değerlerini al
+      const fuelType = document.getElementById('fuelType').value;
+      const lastMaintenanceDate = new Date(document.getElementById('lastMaintenanceDate').value);
+      const lastMaintenanceKm = parseInt(document.getElementById('lastMaintenanceKm').value);
+      const currentKm = parseInt(document.getElementById('currentKm').value);
+      const resultDiv = document.getElementById('result');
+
+      // Bakım aralığı (km cinsinden)
+      const maintenanceInterval = fuelType === 'benzin' ? 12000 : 10000; // Benzinli: 12.000 km, Dizel: 10.000 km
+      const avgKmPerDay = 50; // Ortalama günlük km (tahmini, özelleştirilebilir)
+
+      // Hata kontrolü
+      if (currentKm < lastMaintenanceKm) {
+        resultDiv.innerHTML = 'Hata: Mevcut kilometre, son bakım kilometresinden küçük olamaz!';
+        resultDiv.classList.remove('hidden');
+        return;
+      }
+
+      // Bir sonraki bakım kilometresi
+      const nextMaintenanceKm = lastMaintenanceKm + maintenanceInterval;
+
+      // Tahmini gün sayısı hesaplama
+      const kmDifference = nextMaintenanceKm - currentKm;
+      const daysToNextMaintenance = Math.ceil(kmDifference / avgKmPerDay);
+
+      // Bir sonraki bakım tarihi
+      const nextMaintenanceDate = new Date();
+      nextMaintenanceDate.setDate(lastMaintenanceDate.getDate() + daysToNextMaintenance);
+
+      // Sonuçları formatla
+      const formattedDate = nextMaintenanceDate.toLocaleDateString('tr-TR');
+      resultDiv.innerHTML = `
+        <strong>Sonraki Bakım Zamanı:</strong><br>
+        Tahmini Bakım Kilometresi: ${nextMaintenanceKm} km<br>
+        Tahmini Bakım Tarihi: ${formattedDate}
+      `;
+      resultDiv.classList.remove('hidden');
+    });
   </script>
 </body>
 </html>
