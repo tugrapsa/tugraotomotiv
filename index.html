@@ -1,123 +1,107 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tuğra Otomotiv - Konya'da Peugeot, Citroën, DS ve Opel araçlar için uzman tamir ve bakım servisi.">
-    <meta name="keywords" content="Konya oto tamir, Peugeot tamir Konya, Citroën bakım, PSA araç servisi, Tuğra Otomotiv">
-    <meta name="author" content="Tuğra Otomotiv">
-    <title>Tuğra Otomotiv - Konya Oto Servis</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1e3a8a"> <!-- PWA tema rengi -->
+  <title>Tuğra Otomotiv</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/ac77bced3a.js" crossorigin="anonymous"></script> <!-- Kitiniz -->
+  <style>
+    .spin-slow {
+      animation: spin 3s linear infinite;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    .fade-out {
+      animation: fadeOut 1s ease forwards;
+    }
+  </style>
+  <link rel="manifest" href="manifest.json"> <!-- PWA manifest -->
 </head>
-<body class="bg-gray-100 font-sans text-gray-800">
-    <!-- Header -->
-    <header class="bg-blue-900 text-white p-4 sticky top-0 z-10 shadow-md transition-shadow duration-300">
-        <nav class="max-w-6xl mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold animate__animated animate__fadeIn">Tuğra Otomotiv</h1>
-            <ul class="flex space-x-6">
-                <li><a href="index.html" class="hover:text-blue-300 transition-colors">Ana Sayfa</a></li>
-                <li><a href="about.html" class="hover:text-blue-300 transition-colors">Hakkımızda</a></li>
-                <li><a href="services.html" class="hover:text-blue-300 transition-colors">Hizmetler</a></li>
-                <li><a href="contact.html" class="hover:text-blue-300 transition-colors">İletişim</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="bg-blue-900 text-white font-sans">
 
-    <!-- Hero Section -->
-    <section class="bg-blue-800 text-white py-20 bg-cover bg-center" style="background-image: url('https://via.placeholder.com/1920x600?text=Peugeot+Citroen')">
-        <div class="max-w-6xl mx-auto text-center animate__animated animate__zoomIn">
-            <h2 class="text-5xl font-bold mb-4">Konya’da PSA Araçlar için Uzman Servis</h2>
-            <p class="text-xl mb-6">Peugeot, Citroën, DS ve Opel araçlarınız için güvenilir tamir ve bakım hizmeti.</p>
-            <a href="tel:+905424212442" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
-                <i class="fas fa-phone-alt mr-2"></i> Hemen Arayın
-            </a>
-        </div>
-    </section>
+  <!-- Splash Screen / Loading -->
+  <div id="splash" class="fixed inset-0 bg-blue-900 flex flex-col justify-center items-center z-50">
+    <svg class="w-20 h-20 text-white spin-slow mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z"/>
+    </svg>
+    <p class="text-lg font-semibold">Yükleniyor...</p>
+  </div>
 
-    <!-- Services Overview -->
-    <section class="py-12">
-        <div class="max-w-6xl mx-auto">
-            <h3 class="text-3xl font-bold text-center mb-8 animate__animated animate__fadeInUp">Hizmetlerimiz</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-1s">
-                    <i class="fas fa-tools text-4xl text-blue-600 mb-4"></i>
-                    <h4 class="text-xl font-semibold mb-2">Periyodik Bakım</h4>
-                    <p>Peugeot ve Citroën araçlarınız için düzenli bakım hizmetleri, uzun ömürlü performans için.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-2s">
-                    <i class="fas fa-diagnoses text-4xl text-blue-600 mb-4"></i>
-                    <h4 class="text-xl font-semibold mb-2">Arıza Tespiti</h4>
-                    <p>Gelişmiş diagnostik cihazlarımızla PSA araçlarınızın sorunlarını hızlıca tespit ediyoruz.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-3s">
-                    <i class="fas fa-cogs text-4xl text-blue-600 mb-4"></i>
-                    <h4 class="text-xl font-semibold mb-2">Yedek Parça</h4>
-                    <p>Orijinal ve kaliteli yedek parçalarla aracınızı ilk günkü haline getiriyoruz.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Main Content -->
+  <main class="min-h-screen flex flex-col justify-center items-center px-4 pt-20 pb-10 space-y-8 text-center">
+    <!-- Logo -->
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZIFRfNBUOC9DwkqbMlCGq6lgazjeyEErBlMCcw_IMfLNIGZ97vHgSeqrDMqZ9Nc6sHzdYM2XPEasRKkqZmk6AQgr7UkAV5aXdqxusbnLTNFEZVZ99TjDeNOLUbtIAOjRunhbnPDuEB-45Ms9Noh8HcGvBG-YafgukX5zQwADm78sC_nyJjRRv5fA19q7p/s0/logo.png"
+      alt="Tuğra Otomotiv" class="w-24 h-24 rounded-full shadow-lg" />
 
-    <!-- Contact Info -->
-    <section class="bg-gray-200 py-12">
-        <div class="max-w-6xl mx-auto text-center animate__animated animate__fadeIn">
-            <h3 class="text-3xl font-bold mb-4">Bize Ulaşın</h3>
-            <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i> Karatay Sanayi Freze Sk. No: 18, Selçuklu / Konya</p>
-            <p class="mb-2"><i class="fas fa-phone-alt mr-2"></i> <a href="tel:+905424212442">0542 421 24 42 (İbrahim Etem Güneş)</a></p>
-            <p class="mb-2"><i class="fas fa-phone-alt mr-2"></i> <a href="tel:+905335574651">0533 557 46 51 (Ökkeş Usta)</a></p>
-            <a href="https://www.facebook.com/tugrapeugeotcitroen/" class="text-blue-600 hover:underline"><i class="fab fa-facebook mr-2"></i> Facebook Sayfamız</a>
-        </div>
-    </section>
+    <!-- Ulaşım Bilgisi -->
+    <p class="text-md text-white">📞 7/24 bize ulaşabilirsiniz</p>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/+905424212442" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-transform transform hover:scale-110">
-        <i class="fab fa-whatsapp text-2xl"></i>
-    </a>
+    <!-- Navigation -->
+    <div class="grid grid-cols-3 gap-6 w-full max-w-xs">
+      <a href="index3.html" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fas fa-home text-3xl mb-2"></i>
+        <span class="text-sm">Ana Sayfa</span>
+      </a>
+      <a href="about.html" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fas fa-info-circle text-3xl mb-2"></i>
+        <span class="text-sm">Hakkımızda</span>
+      </a>
+      <a href="services.html" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fas fa-tools text-3xl mb-2"></i>
+        <span class="text-sm">Hizmetler</span>
+      </a>
+      <a href="contact.html" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fas fa-phone text-3xl mb-2"></i>
+        <span class="text-sm">İletişim</span>
+      </a>
+      <a href="faq.html" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fas fa-question-circle text-3xl mb-2"></i>
+        <span class="text-sm">SSS</span>
+      </a>
+      <a href="https://wa.me/905424212442" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fab fa-whatsapp text-3xl text-green-400 mb-2"></i>
+        <span class="text-sm">WhatsApp</span>
+      </a>
+    </div>
+  </main>
 
-    <!-- Footer -->
-    <footer class="bg-blue-900 text-white p-4 text-center">
-        <p>&copy; 2025 Tuğra Otomotiv. Tüm hakları saklıdır.</p>
-    </footer>
+  <!-- Footer -->
+  <footer class="text-center text-xs text-blue-300 mt-10">
+    &copy; 2025 Tuğra Otomotiv
+  </footer>
+
+  <!-- PWA Script -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      // Splash screen'i kaldır
+      setTimeout(() => {
+        const splash = document.getElementById('splash');
+        splash.classList.add('fade-out');
+        setTimeout(() => splash.remove(), 1000);
+      }, 2000); // 2 saniye beklet
+    });
+  </script>
+  
+  <!-- Service Worker (PWA) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => {
+          console.log('Service Worker başarıyla kaydedildi: ', registration);
+        })
+        .catch(error => {
+          console.log('Service Worker kaydedilemedi: ', error);
+        });
+    }
+  </script>
 </body>
 </html>
