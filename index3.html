@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -10,30 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <style>
-        @media (max-width: 768px) {
-     section {
-     background-size: contain; /* Küçük ekranlar için resim tamamen gözükmesi sağlanabilir */
-       }
-        }
         /* Hamburger Menüsü */
+        .hamburger {
+            display: none;
+        }
+
         @media (max-width: 768px) {
-            .menu {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-                cursor: pointer;
-            }
-
-            .hamburger span {
-                display: block;
-                width: 25px;
-                height: 3px;
-                background-color: #fff;
-                margin: 5px 0;
-            }
-
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -49,37 +32,45 @@
                 display: flex;
             }
 
-            .nav-links li {
-                padding: 10px;
-                text-align: center;
-                width: 100%;
-            }
-
-            .nav-links li a {
-                color: white;
-                font-size: 1.2rem;
-                padding: 10px 20px;
-                text-decoration: none;
+            .hamburger {
                 display: block;
+                cursor: pointer;
             }
 
-            .nav-links li a:hover {
-                background-color: #3B82F6;
+            .hamburger span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background-color: #fff;
+                margin: 5px 0;
+                transition: all 0.3s ease;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
             }
         }
 
-        /* Normal (büyük ekran) menü stili */
+        /* Büyük ekranlar için menü */
         @media (min-width: 769px) {
-            .hamburger {
-                display: none;
-            }
-
             .nav-links {
                 display: flex;
             }
+        }
 
-            .nav-links li {
-                padding: 0 15px;
+        /* Hero Section Arka Plan */
+        @media (max-width: 768px) {
+            .hero-section {
+                background-size: cover;
+                background-position: center;
             }
         }
     </style>
@@ -98,7 +89,7 @@
             </div>
 
             <!-- Menüler -->
-            <ul class="nav-links flex space-x-6">
+            <ul class="nav-links flex space-x-6 md:flex md:space-x-6">
                 <li><a href="index.html" class="hover:text-blue-300 transition-colors">Ana Sayfa</a></li>
                 <li><a href="about.html" class="hover:text-blue-300 transition-colors">Hakkımızda</a></li>
                 <li><a href="services.html" class="hover:text-blue-300 transition-colors">Hizmetler</a></li>
@@ -109,7 +100,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-blue-800 text-white py-20 bg-cover bg-center" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZIFRfNBUOC9DwkqbMlCGq6lgazjeyEErBlMCcw_IMfLNIGZ97vHgSeqrDMqZ9Nc6sHzdYM2XPEasRKkqZmk6AQgr7UkAV5aXdqxusbnLTNFEZVZ99TjDeNOLUbtIAOjRunhbnPDuEB-45Ms9Noh8HcGvBG-YafgukX5zQwADm78sC_nyJjRRv5fA19q7p/s0/logo.png')">
+    <section class="hero-section bg-blue-800 text-white py-20 bg-cover bg-center" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZIFRfNBUOC9DwkqbMlCGq6lgazjeyEErBlMCcw_IMfLNIGZ97vHgSeqrDMqZ9Nc6sHzdYM2XPEasRKkqZmk6AQgr7UkAV5aXdqxusbnLTNFEZVZ99TjDeNOLUbtIAOjRunhbnPDuEB-45Ms9Noh8HcGvBG-YafgukX5zQwADm78sC_nyJjRRv5fA19q7p/s0/logo.png'); background-color: #1E3A8A;">
         <div class="max-w-6xl mx-auto text-center animate__animated animate__zoomIn">
             <h2 class="text-5xl font-bold mb-4">Konya’da PSA Araçlar için Uzman Servis</h2>
             <p class="text-xl mb-6">Peugeot, Citroën, DS ve Opel araçlarınız için güvenilir tamir ve bakım hizmeti.</p>
@@ -127,7 +118,9 @@
     <script>
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
             navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
         }
     </script>
 </body>
