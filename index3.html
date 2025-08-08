@@ -11,66 +11,77 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <style>
-        /* Hamburger Menüsü */
-        .hamburger {
-            display: none;
+        /* Body scroll kilidi */
+        .no-scroll {
+            overflow: hidden;
+            height: 100vh;
         }
-
+    
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                background-color: #1E3A8A;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                z-index: 10;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
             .hamburger {
                 display: block;
                 cursor: pointer;
             }
-
+    
             .hamburger span {
                 display: block;
                 width: 25px;
                 height: 3px;
                 background-color: #fff;
                 margin: 5px 0;
-                transition: all 0.3s ease;
             }
-
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
-            }
-        }
-
-        /* Büyük ekranlar için menü */
-        @media (min-width: 769px) {
+    
             .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: #1E3A8A;
+                position: fixed; /* absolute -> fixed */
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh; /* Tüm ekranı kapla */
+                padding-top: 80px; /* Menü ikonunun altından başlasın */
+                z-index: 50; /* Üste çıkar */
+            }
+    
+            .nav-links.active {
                 display: flex;
             }
+    
+            .nav-links li {
+                padding: 10px;
+                text-align: center;
+                width: 100%;
+            }
+    
+            .nav-links li a {
+                color: white;
+                font-size: 1.5rem;
+                padding: 10px 20px;
+                text-decoration: none;
+                display: block;
+            }
+    
+            .nav-links li a:hover {
+                background-color: #3B82F6;
+            }
         }
-
-        /* Hero Section Arka Plan */
-        @media (max-width: 768px) {
-            .hero-section {
-                background-size: cover;
-                background-position: center;
+    
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
+    
+            .nav-links {
+                display: flex !important;
+                position: static;
+                flex-direction: row;
+                height: auto;
+                background-color: transparent;
+            }
+    
+            .nav-links li {
+                padding: 0 15px;
             }
         }
     </style>
@@ -118,9 +129,16 @@
     <script>
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
-            const hamburger = document.querySelector('.hamburger');
+            const body = document.body;
+    
             navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
+    
+            // Menü açıldığında kaydırmayı engelle
+            if (navLinks.classList.contains('active')) {
+                body.classList.add('no-scroll');
+            } else {
+                body.classList.remove('no-scroll');
+            }
         }
     </script>
 </body>
