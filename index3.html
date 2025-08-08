@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tuğra Otomotiv</title>
+  <meta name="description" content="Tuğra Otomotiv - Konya’da Peugeot, Citroën, DS ve Opel araçlar için uygun maliyetli, uzman tamir ve bakım hizmetleri." />
+  <meta name="keywords" content="Konya oto tamir, Peugeot tamir Konya, Citroën bakım, PSA araç servisi, uygun fiyatlı oto servis, Tuğra Otomotiv" />
+  <meta name="author" content="Tuğra Otomotiv" />
+  <title>Tuğra Otomotiv - Konya’nın PSA Araç Uzmanı</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <script>
     function toggleMenu() {
       const menu = document.getElementById("mobile-menu");
@@ -16,11 +20,10 @@
   </script>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
-
   <!-- Header -->
   <header class="bg-blue-900 text-white p-4 sticky top-0 z-50 shadow-md">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Tuğra Otomotiv</h1>
+      <h1 class="text-2xl font-bold animate__animated animate__fadeIn">Tuğra Otomotiv</h1>
       
       <!-- Hamburger Menü Butonu -->
       <button class="md:hidden flex flex-col space-y-1" onclick="toggleMenu()">
@@ -31,21 +34,21 @@
 
       <!-- Normal Menü -->
       <ul class="hidden md:flex space-x-6">
-        <li><a href="index.html" class="hover:text-blue-300">Ana Sayfa</a></li>
-        <li><a href="about.html" class="hover:text-blue-300">Hakkımızda</a></li>
-        <li><a href="services.html" class="hover:text-blue-300">Hizmetler</a></li>
-        <li><a href="contact.html" class="hover:text-blue-300">İletişim</a></li>
-        <li><a href="faq.html" class="hover:text-blue-300">SSS</a></li>
+        <li><a href="index.html" class="hover:text-blue-300 transition-colors">Ana Sayfa</a></li>
+        <li><a href="about.html" class="hover:text-blue-300 transition-colors">Hakkımızda</a></li>
+        <li><a href="services.html" class="hover:text-blue-300 transition-colors">Hizmetler</a></li>
+        <li><a href="contact.html" class="hover:text-blue-300 transition-colors">İletişim</a></li>
+        <li><a href="faq.html" class="hover:text-blue-300 transition-colors">SSS</a></li>
       </ul>
     </div>
 
     <!-- Mobil Menü (Toggle ile aç/kapat) -->
     <div id="mobile-menu" class="md:hidden fixed inset-0 bg-blue-900 bg-opacity-95 flex flex-col items-center justify-center text-white space-y-6 text-xl hidden z-40">
-      <a href="index.html" onclick="toggleMenu()">Ana Sayfa</a>
-      <a href="about.html" onclick="toggleMenu()">Hakkımızda</a>
-      <a href="services.html" onclick="toggleMenu()">Hizmetler</a>
-      <a href="contact.html" onclick="toggleMenu()">İletişim</a>
-      <a href="faq.html" onclick="toggleMenu()">SSS</a>
+      <a href="index.html" onclick="toggleMenu()" class="hover:text-blue-300">Ana Sayfa</a>
+      <a href="about.html" onclick="toggleMenu()" class="hover:text-blue-300">Hakkımızda</a>
+      <a href="services.html" onclick="toggleMenu()" class="hover:text-blue-300">Hizmetler</a>
+      <a href="contact.html" onclick="toggleMenu()" class="hover:text-blue-300">İletişim</a>
+      <a href="faq.html" onclick="toggleMenu()" class="hover:text-blue-300">SSS</a>
       <button class="absolute top-4 right-6 text-3xl" onclick="toggleMenu()">&times;</button>
     </div>
   </header>
@@ -54,10 +57,149 @@
   <section class="bg-blue-800 text-white py-20 bg-cover bg-center" style="background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZIFRfNBUOC9DwkqbMlCGq6lgazjeyEErBlMCcw_IMfLNIGZ97vHgSeqrDMqZ9Nc6sHzdYM2XPEasRKkqZmk6AQgr7UkAV5aXdqxusbnLTNFEZVZ99TjDeNOLUbtIAOjRunhbnPDuEB-45Ms9Noh8HcGvBG-YafgukX5zQwADm78sC_nyJjRRv5fA19q7p/s0/logo.png');">
     <div class="max-w-6xl mx-auto text-center animate__animated animate__zoomIn px-4">
       <h2 class="text-4xl md:text-5xl font-bold mb-4">Konya’da PSA Araçlar için Uzman Servis</h2>
-      <p class="text-lg md:text-xl mb-6">Peugeot, Citroën, DS ve Opel araçlarınız için güvenilir tamir ve bakım hizmeti.</p>
+      <p class="text-lg md:text-xl mb-6">Peugeot, Citroën, DS ve Opel araçlarınız için güvenilir, uygun maliyetli ve profesyonel tamir ve bakım hizmeti.</p>
       <a href="tel:+905424212442" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
         <i class="fas fa-phone-alt mr-2"></i> Hemen Arayın
       </a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-12 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h3 class="text-3xl font-bold text-center mb-8 animate__animated animate__fadeInUp">Hizmetlerimiz</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-1s">
+          <i class="fas fa-tools text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Periyodik Bakım</h4>
+          <p>Peugeot, Citroën, DS ve Opel araçlar için yağ değişimi, filtre değişimi ve genel kontroller.</p>
+        </div>
+        <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-2s">
+          <i class="fas fa-diagnoses text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Elektronik Diagnostik</h4>
+          <p>Gelişmiş cihazlarla motor, şanzıman ve elektronik sistem arızalarını hızlıca tespit ediyoruz.</p>
+        </div>
+        <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-3s">
+          <i class="fas fa-cogs text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Yedek Parça Değişimi</h4>
+          <p>Orijinal PSA yedek parçalarıyla aracınızın performansını koruyoruz.</p>
+        </div>
+        <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-4s">
+          <i class="fas fa-car-battery text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Fren ve Süspansiyon</h4>
+          <p>Fren balatası, disk ve süspansiyon sistemleri için uzman onarım hizmetleri.</p>
+        </div>
+        <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-5s">
+          <i class="fas fa-engine text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Motor Rektifiye</h4>
+          <p>1.2 PureTech, 1.6 HDi gibi PSA motorları için sıfırdan yenileme hizmetleri.</p>
+        </div>
+        <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-6s">
+          <i class="fas fa-tachometer-alt text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Performans Optimizasyonu</h4>
+          <p>Aracınızın performansını artıran özel bakım ve ayar hizmetleri.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-12 bg-gray-200">
+    <div class="max-w-6xl mx-auto px-4">
+      <h3 class="text-3xl font-bold text-center mb-8 animate__animated animate__fadeInUp">Neden Tuğra Otomotiv?</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-1s">
+          <i class="fas fa-wallet text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Uygun Maliyetli Çözümler</h4>
+          <p>Kaliteli hizmeti bütçenize uygun fiyatlarla sunuyoruz.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-2s">
+          <i class="fas fa-user-tie text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Alanında Uzman Ekip</h4>
+          <p>İbrahim Etem Güneş ve Ökkeş Usta liderliğinde deneyimli teknisyenler.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-3s">
+          <i class="fas fa-cogs text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Orijinal PSA Yedek Parçalar</h4>
+          <p>Aracınız için sadece orijinal ve kaliteli parçalar kullanıyoruz.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-4s">
+          <i class="fas fa-diagnoses text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Gelişmiş Diagnostik Cihazlar</h4>
+          <p>En son teknolojiyle arızaları hızlı ve doğru tespit ediyoruz.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-5s">
+          <i class="fas fa-clock text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Hızlı ve Güvenilir Hizmet</h4>
+          <p>Aracınızı en kısa sürede teslim ediyoruz, kaliteden ödün vermeden.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-6s">
+          <i class="fas fa-smile text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Müşteri Memnuniyeti</h4>
+          <p>Her zaman müşteri memnuniyetini ön planda tutuyoruz.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-7s">
+          <i class="fas fa-map-marker-alt text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Konya’nın Merkezi Konumu</h4>
+          <p>Karatay Sanayi’de, Kent Plaza karşısında kolay erişim.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-8s">
+          <i class="fas fa-car text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Peugeot ve Citroën Uzmanlığı</h4>
+          <p>PSA grubu araçlar için özel bilgi ve deneyim.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-9s">
+          <i class="fas fa-engine text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Motor Rektifiye Hizmetleri</h4>
+          <p>Tüm PSA motorları için sıfırdan yenileme çözümleri.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-10s">
+          <i class="fas fa-leaf text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Çevre Dostu Bakım</h4>
+          <p>Çevreye duyarlı yöntemlerle bakım ve tamir.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-11s">
+          <i class="fas fa-file-invoice-dollar text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Şeffaf Fiyatlandırma</h4>
+          <p>Sürpriz maliyetler olmadan açık ve net fiyatlar.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-12s">
+          <i class="fas fa-shield-alt text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Garantili Tamir</h4>
+          <p>Yaptığımız tüm tamirler için garanti sunuyoruz.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-13s">
+          <i class="fas fa-list text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Geniş Hizmet Yelpazesi</h4>
+          <p>Tamirden bakıma, diagnostikten yedek parçaya kadar her şey.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-14s">
+          <i class="fas fa-users text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Deneyimli Teknisyenler</h4>
+          <p>Alanında uzman ekibimizle güvenilir hizmet.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow transform hover:scale-105 animate__animated animate__fadeInUp animate__delay-15s">
+          <i class="fas fa-calendar-check text-4xl text-blue-600 mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Hızlı Randevu Sistemi</h4>
+          <p>Kolay ve hızlı randevu ile zamanınızı koruyoruz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="bg-blue-800 text-white py-12">
+    <div class="max-w-6xl mx-auto text-center animate__animated animate__bounceIn px-4">
+      <h3 class="text-2xl md:text-3xl font-bold mb-4">Aracınız için En İyi Servisi Alın!</h3>
+      <p class="text-lg mb-6">Tuğra Otomotiv ile Peugeot, Citroën, DS ve Opel araçlarınızı güvenle emanet edin.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="tel:+905424212442" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+          <i class="fas fa-phone-alt mr-2"></i> Hemen Arayın
+        </a>
+        <a href="https://wa.me/+905424212442" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+          <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+        </a>
+      </div>
     </div>
   </section>
 
@@ -65,6 +207,5 @@
   <footer class="bg-blue-900 text-white p-4 text-center">
     <p>&copy; 2025 Tuğra Otomotiv. Tüm hakları saklıdır.</p>
   </footer>
-
 </body>
 </html>
