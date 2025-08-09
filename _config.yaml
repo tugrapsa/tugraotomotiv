@@ -72,7 +72,7 @@ defaults:
 
 # Google Analytics ve Search Console
 google_analytics: UA-XXXXXXXXX-X
-google_site_verification: "GOOGLE_SEARCH_CONSOLE_KODU"
+google_site_verification: "hVWRXsIbjSDTq9Tr3GyrYgmsuLHtbrI275xL5Roh1Wk"
 
 # Yapısal Veri (Schema.org) Ekstra
 structured_data:
