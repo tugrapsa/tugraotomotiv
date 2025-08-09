@@ -1,0 +1,90 @@
+# Site Temel Bilgileri
+title: "Tuğra Otomotiv | Konya PSA Grubu Araç Tamiri"
+description: "Konya'da Peugeot, Citroën, DS ve Opel araç tamir, bakım ve elektrikli araç hizmetleri. PSA grubu arıza kodları ve uzman teknik destek."
+url: "https://tugrapsa.github.io"
+lang: "tr"
+timezone: "Europe/Istanbul"
+
+# SEO Anahtar Kelimeler
+keywords:
+  - Konya Peugeot Tamiri
+  - Konya Citroën Servisi
+  - Konya DS Tamiri
+  - Konya Opel Servisi
+  - PSA Grubu Araç Tamiri
+  - Konya Elektrikli Araç Tamiri
+  - Peugeot Arıza Kodları
+  - Citroën Arıza Kodları
+  - DS Arıza Kodları
+  - Opel Arıza Kodları
+  - Konya Özel Servis
+
+# Yazar Bilgileri
+author:
+  name: "Tuğra Otomotiv"
+  email: "info@tugraotomotiv.com"
+  phone: "+90 533 557 46 51"
+  address: "Konya, Türkiye"
+  social:
+    facebook: "https://facebook.com/tugrapeugeotcitroen"
+    instagram: "https://instagram.com/tugrapeugeot"
+    whatsapp: "https://wa.me/905335574651"
+    google_maps: "https://www.google.com/maps/place//data=!4m2!3m1!1s0x14d08f815dd29baf:0x1c5aae05a8fa120b?sa=X&ved=1t:8290&ictx=111"
+
+# Tema ve Eklentiler
+theme: minima
+plugins:
+  - jekyll-seo-tag     # Meta etiketleri otomatik ekler
+  - jekyll-sitemap     # sitemap.xml oluşturur
+  - jekyll-feed        # RSS beslemesi
+  - jekyll-paginate    # Sayfalama
+  - jekyll-robots-txt  # robots.txt otomatik
+  - jekyll-redirect-from
+
+# SEO Ek Ayarlar
+seo:
+  type: LocalBusiness
+  business_name: "Tuğra Otomotiv"
+  business_type: "AutoRepair"
+  opening_hours: "Mo-Sa 09:00-19:00"
+  price_range: "₺₺"
+  geo:
+    latitude: 37.871234
+    longitude: 32.496123
+  area_served: "Konya ve çevresi"
+  sameAs:
+    - https://facebook.com/tugraotomotiv
+    - https://instagram.com/tugraotomotiv
+
+# Varsayılanlar (Sayfalara otomatik meta ekleme)
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+      lang: "tr"
+      seo:
+        image: "/logo.png"
+        twitter_card: "summary_large_image"
+        locale: "tr_TR"
+
+# Google Analytics ve Search Console
+google_analytics: UA-XXXXXXXXX-X
+google_site_verification: "GOOGLE_SEARCH_CONSOLE_KODU"
+
+# Yapısal Veri (Schema.org) Ekstra
+structured_data:
+  context: "https://schema.org"
+  type: "AutoRepair"
+  name: "Tuğra Otomotiv"
+  image: "https://tugrapsa.github.io/logo.png"
+  "@id": "https://tugrapsa.github.io"
+  url: "https://tugrapsa.github.io"
+  telephone: "+90 533 557 46 51"
+  address:
+    "@type": "PostalAddress"
+    streetAddress: "Konya"
+    addressLocality: "Konya"
+    addressCountry: "TR"
