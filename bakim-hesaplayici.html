@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Araç Bakım Hesaplayıcı - Tuğra Otomotiv</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobile-menu");
+      const body = document.body;
+      menu.classList.toggle("hidden");
+      body.classList.toggle("overflow-hidden");
+    }
+  </script>
+</head>
+<body class="bg-blue-900 text-white font-sans p-4">
+     <header class="bg-blue-900 text-white p-4 sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+          <h1 class="text-2xl font-bold animate__animated animate__fadeIn">Tuğra Otomotiv</h1>
+          
+          <!-- Hamburger Menü Butonu -->
+          <button class="md:hidden flex flex-col space-y-1" onclick="toggleMenu()">
+            <span class="w-6 h-0.5 bg-white"></span>
+            <span class="w-6 h-0.5 bg-white"></span>
+            <span class="w-6 h-0.5 bg-white"></span>
+          </button>
+    
+          <!-- Normal Menü -->
+          <ul class="hidden md:flex space-x-6">
+            <li><a href="index.html" class="hover:text-blue-300 transition-colors">Ana Sayfa</a></li>
+            <li><a href="about.html" class="hover:text-blue-300 transition-colors">Hakkımızda</a></li>
+            <li><a href="services.html" class="hover:text-blue-300 transition-colors">Hizmetler</a></li>
+            <li><a href="contact.html" class="hover:text-blue-300 transition-colors">İletişim</a></li>
+            <li><a href="faq.html" class="hover:text-blue-300 transition-colors">SSS</a></li>
+          </ul>
+        </div>
+    
+        <!-- Mobil Menü (Toggle ile aç/kapat) -->
+        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-blue-900 bg-opacity-95 flex flex-col items-center justify-center text-white space-y-6 text-xl hidden z-40">
+          <a href="index.html" onclick="toggleMenu()" class="hover:text-blue-300">Ana Sayfa</a>
+          <a href="about.html" onclick="toggleMenu()" class="hover:text-blue-300">Hakkımızda</a>
+          <a href="services.html" onclick="toggleMenu()" class="hover:text-blue-300">Hizmetler</a>
+          <a href="contact.html" onclick="toggleMenu()" class="hover:text-blue-300">İletişim</a>
+          <a href="faq.html" onclick="toggleMenu()" class="hover:text-blue-300">SSS</a>
+          <button class="absolute top-4 right-6 text-3xl" onclick="toggleMenu()">&times;</button>
+        </div>
+    </header>
+  <h1 class="text-2xl font-bold text-center mb-6">Araç Bakım Hesaplayıcı</h1>
+
+  <div class="w-full max-w-md mx-auto bg-white text-blue-900 p-6 rounded-lg shadow-lg">
+    <form id="maintenanceForm" class="space-y-4">
+      <div>
+        <label for="fuelType" class="block text-sm font-medium">Yakıt Türü:</label>
+        <select id="fuelType" name="fuelType" class="w-full p-2 border border-gray-300 rounded-md" required>
+          <option value="benzin">Benzinli</option>
+          <option value="dizel">Dizel</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="euroClass" class="block text-sm font-medium">Emisyon Standardı:</label>
+        <select id="euroClass" name="euroClass" class="w-full p-2 border border-gray-300 rounded-md" required>
+          <option value="euro4">Euro 4</option>
+          <option value="euro5">Euro 5</option>
+          <option value="euro6">Euro 6</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="lastMaintenanceDate" class="block text-sm font-medium">Son Bakım Tarihi:</label>
+        <input type="date" id="lastMaintenanceDate" name="lastMaintenanceDate" class="w-full p-2 border border-gray-300 rounded-md" required>
+      </div>
+
+      <div>
+        <label for="lastMaintenanceKm" class="block text-sm font-medium">Son Bakım Kilometresi (km):</label>
+        <input type="number" id="lastMaintenanceKm" name="lastMaintenanceKm" min="0" class="w-full p-2 border border-gray-300 rounded-md" required>
+      </div>
+
+      <div>
+        <label for="currentKm" class="block text-sm font-medium">Mevcut Kilometre (km):</label>
+        <input type="number" id="currentKm" name="currentKm" min="0" class="w-full p-2 border border-gray-300 rounded-md" required>
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700">
+        Sonraki Bakımı Hesapla
+      </button>
+    </form>
+
+    <div id="result" class="mt-4 p-4 bg-gray-100 rounded-md hidden"></div>
+  </div>
+
+  <script>
+    document.getElementById('maintenanceForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const fuelType = document.getElementById('fuelType').value;
+      const euroClass = document.getElementById('euroClass').value;
+      const lastMaintenanceDate = new Date(document.getElementById('lastMaintenanceDate').value);
+      const lastMaintenanceKm = parseInt(document.getElementById('lastMaintenanceKm').value);
+      const currentKm = parseInt(document.getElementById('currentKm').value);
+      const resultDiv = document.getElementById('result');
+
+      let maintenanceInterval = (euroClass === 'euro4') ? 10000 : 15000;
+      const avgKmPerDay = 50;
+
+      if (currentKm < lastMaintenanceKm) {
+        resultDiv.innerHTML = '⚠️ Mevcut kilometre, son bakım kilometresinden küçük olamaz!';
+        resultDiv.classList.remove('hidden');
+        return;
+      }
+
+      const nextMaintenanceKm = lastMaintenanceKm + maintenanceInterval;
+      const kmDifference = nextMaintenanceKm - currentKm;
+      const daysToNextMaintenance = Math.ceil(kmDifference / avgKmPerDay);
+
+      const nextMaintenanceDate = new Date();
+      nextMaintenanceDate.setDate(lastMaintenanceDate.getDate() + daysToNextMaintenance);
+
+      const formattedDate = nextMaintenanceDate.toLocaleDateString('tr-TR');
+      resultDiv.innerHTML = `
+        <strong>Sonraki Bakım Bilgileri:</strong><br>
+        Tahmini Bakım Kilometresi: ${nextMaintenanceKm} km<br>
+        Tahmini Bakım Tarihi: ${formattedDate}
+      `;
+      resultDiv.classList.remove('hidden');
+    });
+  </script>
+
+</body>
+</html>

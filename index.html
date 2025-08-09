@@ -3,41 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <!-- Google tag (gtag.js) -->
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-31MZDS9V1W"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-31MZDS9V1W"></script>
   <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-31MZDS9V1W');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-31MZDS9V1W');
   </script>
+
   <meta name="google-site-verification" content="hVWRXsIbjSDTq9Tr3GyrYgmsuLHtbrI275xL5Roh1Wk" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#1e3a8a"> <!-- PWA tema rengi -->
+  <meta name="theme-color" content="#1e3a8a">
   <title>Tuğra Otomotiv</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://kit.fontawesome.com/ac77bced3a.js" crossorigin="anonymous"></script> <!-- Kitiniz -->
+  <script src="https://kit.fontawesome.com/ac77bced3a.js" crossorigin="anonymous"></script>
   <style>
-    .spin-slow {
-      animation: spin 3s linear infinite;
-    }
-
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-
-    .fade-out {
-      animation: fadeOut 1s ease forwards;
-    }
+    .spin-slow { animation: spin 3s linear infinite; }
+    @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+    .fade-out { animation: fadeOut 1s ease forwards; }
   </style>
-  <link rel="manifest" href="manifest.json"> <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json">
 </head>
 <body class="bg-blue-900 text-white font-sans">
 
-  <!-- Splash Screen / Loading -->
+  <!-- Splash Screen -->
   <div id="splash" class="fixed inset-0 bg-blue-900 flex flex-col justify-center items-center z-50">
     <svg class="w-20 h-20 text-white spin-slow mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -52,93 +41,50 @@
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZIFRfNBUOC9DwkqbMlCGq6lgazjeyEErBlMCcw_IMfLNIGZ97vHgSeqrDMqZ9Nc6sHzdYM2XPEasRKkqZmk6AQgr7UkAV5aXdqxusbnLTNFEZVZ99TjDeNOLUbtIAOjRunhbnPDuEB-45Ms9Noh8HcGvBG-YafgukX5zQwADm78sC_nyJjRRv5fA19q7p/s0/logo.png"
       alt="Tuğra Otomotiv" class="w-24 h-24 rounded-full shadow-lg" />
 
-    <!-- Ulaşım Bilgisi -->
     <p class="text-md text-white">📞 7/24 bize ulaşabilirsiniz</p>
 
     <!-- Navigation -->
-<!-- Navigation -->
-<div class="grid grid-cols-3 gap-6 w-full max-w-xs">
-  <a href="index3.html" class="flex flex-col items-center hover:scale-110 transition-transform">
-    <i class="fas fa-home text-3xl mb-2"></i>
-    <span class="text-sm">Ana Sayfa</span>
-  </a>
-  <a href="about.html" class="flex flex-col items-center hover:scale-110 transition-transform">
-    <i class="fas fa-info-circle text-3xl mb-2"></i>
-    <span class="text-sm">Hakkımızda</span>
-  </a>
-  <a href="services.html" class="flex flex-col items-center hover:scale-110 transition-transform">
-    <i class="fas fa-tools text-3xl mb-2"></i>
-    <span class="text-sm">Hizmetler</span>
-  </a>
-  <a href="contact.html" class="flex flex-col items-center hover:scale-110 transition-transform">
-    <i class="fas fa-phone text-3xl mb-2"></i>
-    <span class="text-sm">İletişim</span>
-  </a>
-  <a href="faq.html" class="flex flex-col items-center hover:scale-110 transition-transform">
-    <i class="fas fa-question-circle text-3xl mb-2"></i>
-    <span class="text-sm">SSS</span>
-  </a>
-  <a href="https://wa.me/905335574651" class="flex flex-col items-center hover:scale-110 transition-transform">
-    <i class="fab fa-whatsapp text-3xl text-green-400 mb-2"></i>
-    <span class="text-sm">WhatsApp</span>
-  </a>
-
-  <!-- Yeni Eklenen Menü -->
-  <a href="https://tugrapsa.github.io/elektrikliaraba-tamiri.html" class="flex flex-col items-center hover:scale-110 transition-transform">
-    <i class="fas fa-bolt text-3xl text-yellow-400 mb-2"></i>
-    <span class="text-sm">Elektrikli Otomobil</span>
-  </a>
-  <a href="https://tugrapsa.github.io/psagrubu-arac-hata-kodlari.html" class="flex flex-col items-center hover:scale-110 transition-transform">
-    <i class="fas fa-exclamation-triangle text-3xl text-red-500 mb-2"></i>
-    <span class="text-sm">Arıza Kodları</span>
-  </a>
-</div>
-
-    <!-- Araç Bakım Hesaplayıcı -->
-<!-- Araç Bakım Hesaplayıcı -->
-<div class="w-full max-w-md bg-white text-blue-900 p-6 rounded-lg shadow-lg mt-8">
-  <h2 class="text-xl font-semibold mb-4 text-center">Araç Bakım Hesaplayıcı</h2>
-  <form id="maintenanceForm" class="space-y-4">
-    <div>
-      <label for="fuelType" class="block text-sm font-medium">Aracın Yakıt Türü:</label>
-      <select id="fuelType" name="fuelType" class="w-full p-2 border border-gray-300 rounded-md" required>
-        <option value="benzin">Benzinli</option>
-        <option value="dizel">Dizel</option>
-      </select>
+    <div class="grid grid-cols-3 gap-6 w-full max-w-xs">
+      <a href="index3.html" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fas fa-home text-3xl mb-2"></i>
+        <span class="text-sm">Ana Sayfa</span>
+      </a>
+      <a href="about.html" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fas fa-info-circle text-3xl mb-2"></i>
+        <span class="text-sm">Hakkımızda</span>
+      </a>
+      <a href="services.html" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fas fa-tools text-3xl mb-2"></i>
+        <span class="text-sm">Hizmetler</span>
+      </a>
+      <a href="contact.html" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fas fa-phone text-3xl mb-2"></i>
+        <span class="text-sm">İletişim</span>
+      </a>
+      <a href="faq.html" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fas fa-question-circle text-3xl mb-2"></i>
+        <span class="text-sm">SSS</span>
+      </a>
+      <a href="https://wa.me/905335574651" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fab fa-whatsapp text-3xl text-green-400 mb-2"></i>
+        <span class="text-sm">WhatsApp</span>
+      </a>
+      <a href="https://tugrapsa.github.io/elektrikliaraba-tamiri.html" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fas fa-bolt text-3xl text-yellow-400 mb-2"></i>
+        <span class="text-sm">Elektrikli Otomobil</span>
+      </a>
+      <a href="https://tugrapsa.github.io/psagrubu-arac-hata-kodlari.html" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fas fa-exclamation-triangle text-3xl text-red-500 mb-2"></i>
+        <span class="text-sm">Arıza Kodları</span>
+      </a>
+      <!-- Yeni Link: Bakım Hesaplayıcı -->
+      <a href="bakim-hesaplayici.html" class="flex flex-col items-center hover:scale-110 transition-transform">
+        <i class="fas fa-wrench text-3xl text-orange-400 mb-2"></i>
+        <span class="text-sm">Bakım Hesaplayıcı</span>
+      </a>
     </div>
-
-    <div>
-      <label for="euroClass" class="block text-sm font-medium">Emisyon Standardı:</label>
-      <select id="euroClass" name="euroClass" class="w-full p-2 border border-gray-300 rounded-md" required>
-        <option value="euro4">Euro 4</option>
-        <option value="euro5">Euro 5</option>
-        <option value="euro6">Euro 6</option>
-      </select>
-    </div>
-
-    <div>
-      <label for="lastMaintenanceDate" class="block text-sm font-medium">Son Bakım Tarihi:</label>
-      <input type="date" id="lastMaintenanceDate" name="lastMaintenanceDate" class="w-full p-2 border border-gray-300 rounded-md" required>
-    </div>
-
-    <div>
-      <label for="lastMaintenanceKm" class="block text-sm font-medium">Son Bakım Kilometresi (km):</label>
-      <input type="number" id="lastMaintenanceKm" name="lastMaintenanceKm" min="0" class="w-full p-2 border border-gray-300 rounded-md" required>
-    </div>
-
-    <div>
-      <label for="currentKm" class="block text-sm font-medium">Mevcut Kilometre (km):</label>
-      <input type="number" id="currentKm" name="currentKm" min="0" class="w-full p-2 border border-gray-300 rounded-md" required>
-    </div>
-
-    <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700">Sonraki Bakımı Hesapla</button>
-  </form>
-  <div id="result" class="mt-4 p-4 bg-gray-100 rounded-md hidden"></div>
-</div>
-
   </main>
 
-  <!-- Footer -->
   <footer class="text-center text-xs text-blue-300 mt-10">
     &copy; 2025 Tuğra Otomotiv
   </footer>
@@ -146,71 +92,21 @@
   <!-- PWA Script -->
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      // Splash screen'i kaldır
       setTimeout(() => {
         const splash = document.getElementById('splash');
         splash.classList.add('fade-out');
         setTimeout(() => splash.remove(), 1000);
-      }, 2000); // 2 saniye beklet
+      }, 2000);
     });
   </script>
-  
-  <!-- Service Worker (PWA) -->
+
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-worker.js')
-        .then(registration => {
-          console.log('Service Worker başarıyla kaydedildi: ', registration);
-        })
-        .catch(error => {
-          console.log('Service Worker kaydedilemedi: ', error);
-        });
+        .then(registration => console.log('Service Worker başarıyla kaydedildi:', registration))
+        .catch(error => console.log('Service Worker kaydedilemedi:', error));
     }
   </script>
 
-  <!-- Araç Bakım Hesaplayıcı Script -->
-  <script>
-    document.getElementById('maintenanceForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-  
-      const fuelType = document.getElementById('fuelType').value;
-      const euroClass = document.getElementById('euroClass').value;
-      const lastMaintenanceDate = new Date(document.getElementById('lastMaintenanceDate').value);
-      const lastMaintenanceKm = parseInt(document.getElementById('lastMaintenanceKm').value);
-      const currentKm = parseInt(document.getElementById('currentKm').value);
-      const resultDiv = document.getElementById('result');
-  
-      // Emisyon standardına göre bakım aralığı
-      let maintenanceInterval;
-      if (euroClass === 'euro4') {
-        maintenanceInterval = 10000; // Euro 4 → 10.000 km
-      } else {
-        maintenanceInterval = 15000; // Euro 5 ve Euro 6 → 15.000 km
-      }
-  
-      const avgKmPerDay = 50; // Ortalama günlük km
-  
-      if (currentKm < lastMaintenanceKm) {
-        resultDiv.innerHTML = 'Hata: Mevcut kilometre, son bakım kilometresinden küçük olamaz!';
-        resultDiv.classList.remove('hidden');
-        return;
-      }
-  
-      const nextMaintenanceKm = lastMaintenanceKm + maintenanceInterval;
-      const kmDifference = nextMaintenanceKm - currentKm;
-      const daysToNextMaintenance = Math.ceil(kmDifference / avgKmPerDay);
-  
-      const nextMaintenanceDate = new Date();
-      nextMaintenanceDate.setDate(lastMaintenanceDate.getDate() + daysToNextMaintenance);
-  
-      const formattedDate = nextMaintenanceDate.toLocaleDateString('tr-TR');
-      resultDiv.innerHTML = `
-        <strong>Sonraki Bakım Zamanı:</strong><br>
-        Tahmini Bakım Kilometresi: ${nextMaintenanceKm} km<br>
-        Tahmini Bakım Tarihi: ${formattedDate}
-      `;
-      resultDiv.classList.remove('hidden');
-    });
-  </script>
 </body>
 </html>
