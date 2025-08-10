@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Tuğra Otomotiv - Bakım Bilgileri</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #eef2f7; padding: 20px; }
+  .card { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+  h1 { text-align: center; color: #004aad; }
+  p { margin: 8px 0; }
+  .label { font-weight: bold; color: #555; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Tuğra Otomotiv</h1>
+  <div id="bilgiler"></div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const encoded = params.get("s");
+
+if (encoded) {
+  try {
+    const decoded = JSON.parse(atob(encoded));
+
+    document.getElementById("bilgiler").innerHTML = `
+      <p><span class="label">Plaka:</span> ${decoded.plaka}</p>
+      <p><span class="label">Plaka Son Rakam Grubu:</span> ${decoded.plakaSon}</p>
+      <p><span class="label">İşlem:</span> ${decoded.islem}</p>
+      <p><span class="label">Açıklama:</span> ${decoded.aciklama || "Yok"}</p>
+      <p><span class="label">Tarih:</span> ${decoded.tarih}</p>
+    `;
+  } catch {
+    document.getElementById("bilgiler").innerHTML = `<p>Geçersiz QR kod verisi.</p>`;
+  }
+} else {
+  document.getElementById("bilgiler").innerHTML = `<p>Veri bulunamadı.</p>`;
+}
+</script>
+
+</body>
+</html>
