@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Tuğra Otomotiv - QR Kod Üretici</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; background: #f7f7f7; }
+  h1 { text-align: center; }
+  form { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+  label { display: block; margin-top: 10px; font-weight: bold; }
+  input, textarea, select { width: 100%; padding: 8px; margin-top: 5px; }
+  button { margin-top: 15px; padding: 10px; background: #004aad; color: white; border: none; width: 100%; border-radius: 5px; }
+  #qrcode { margin-top: 20px; text-align: center; }
+</style>
+</head>
+<body>
+
+<h1>Tuğra Otomotiv - QR Kod Üret</h1>
+
+<form id="qrForm">
+  <label>Plaka</label>
+  <input type="text" id="plaka" required>
+
+  <label>Plaka Son Rakam Grubu</label>
+  <select id="plakaSon">
+    <option>0-1</option>
+    <option>2-3</option>
+    <option>4-5</option>
+    <option>6-7</option>
+    <option>8-9</option>
+  </select>
+
+  <label>Yapılan İşlem</label>
+  <input type="text" id="islem" placeholder="Örn: Hava filtresi değişimi" required>
+
+  <label>Açıklama</label>
+  <textarea id="aciklama" rows="3"></textarea>
+
+  <label>Tarih</label>
+  <input type="date" id="tarih" required>
+
+  <button type="submit">QR Kod Oluştur</button>
+</form>
+
+<div id="qrcode"></div>
+
+<script>
+document.getElementById("qrForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const plaka = document.getElementById("plaka").value;
+  const plakaSon = document.getElementById("plakaSon").value;
+  const islem = document.getElementById("islem").value;
+  const aciklama = document.getElementById("aciklama").value;
+  const tarih = document.getElementById("tarih").value;
+
+  // JSON veri oluştur
+  const data = {
+    firma: "Tuğra Otomotiv",
+    plaka,
+    plakaSon,
+    islem,
+    aciklama,
+    tarih
+  };
+
+  // Base64 encode
+  const encoded = btoa(JSON.stringify(data));
+
+  // QR kod verisi (müşteri sayfasına yönlendirecek)
+  const url = `https://siteadresin.com/view.html?s=${encoded}`;
+
+  // QR kod oluştur
+  document.getElementById("qrcode").innerHTML = "";
+  new QRCode(document.getElementById("qrcode"), {
+    text: url,
+    width: 200,
+    height: 200
+  });
+});
+</script>
+
+</body>
+</html>
